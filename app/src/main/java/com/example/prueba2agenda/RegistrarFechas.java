@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -41,7 +42,15 @@ public class RegistrarFechas extends AppCompatActivity implements View.OnClickLi
     }
     
     public void Registrar(View view){
-        registrarFechas();
+        String a_fecha= txt_f.getText().toString();
+        String a_hora=txt_h.getText().toString();
+        String a_des= txt_d.getText().toString();
+        if (!a_fecha.isEmpty() && !a_hora.isEmpty() && !a_des.isEmpty()){
+            registrarFechas();
+        }else {
+            Toast.makeText(this, "llena todos los textos weón", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     private void registrarFechas() {
@@ -55,7 +64,9 @@ public class RegistrarFechas extends AppCompatActivity implements View.OnClickLi
 
         long idResultante=db.insert(Utilidades.TABLA_AGENDA,Utilidades.CAMPO_FECHA,values);
 
-        Toast.makeText(getApplicationContext(),"fecha registrado:"+idResultante,Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),"TAREA GUARDADA:"+idResultante,Toast.LENGTH_SHORT).show();
+        Intent dos = new Intent(this, MainActivity.class);
+        startActivity(dos);
 
     }
 

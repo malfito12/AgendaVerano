@@ -60,7 +60,7 @@ public class MostrarFechas extends AppCompatActivity {
     private void obtenerLista() {
         listainformacion=new ArrayList<String>();
         for (int i=0;i<listafechas.size();i++){
-            listainformacion.add(listafechas.get(i).getFecha()+" - "+listafechas.get(i).getHora()+" - "+listafechas.get(i).getDescripsion());
+            listainformacion.add(listafechas.get(i).getDescripsion()+" - "+listafechas.get(i).getHora());
 
         }
     }
